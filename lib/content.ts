@@ -13,7 +13,7 @@ export const CONTENT = {
     cta: "Request a Quote",
   },
   hero: {
-    heroImage: "/hero.jpg",
+    heroImage: "/Hecs.jpg",
     stats: {
       projects: "1,000+ Jobs Done",
       licensed: "Licensed & Insured",
