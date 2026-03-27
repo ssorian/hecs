@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ────────────────────────────────────────────────── */
+:root {
+  --bg-primary:    #1F2A44;   /* azul navy oscuro — fondo principal          */
+  --bg-secondary:  #192338;   /* azul profundo — secciones alternas          */
+  --bg-card:       #243050;   /* azul navy medio — fondo de tarjetas         */
+  --bg-dark:       #192338;   /* navy muy oscuro — footer / CTA / dark       */
+  --accent:        #5B9BD5;   /* azul agua — CTAs, acento principal          */
+  --accent-dark:   #4A87C0;   /* azul más oscuro para hover                  */
+  --text-primary:  #F1F1F1;   /* blanco roto — texto principal               */
+  --text-secondary:#CFCFCF;   /* gris claro — subtítulos                     */
+  --border:        rgba(255,255,255,0.10); /* borde sutil sobre fondo oscuro  */
+  --color-earth:   #5B9BD5;   /* azul acento — labels de sección             */
+  --color-beige:   #243050;   /* navy medio — fondo img fallback             */
+  --color-metal:   #8A8A8A;   /* gris medio — detalles suaves                */
+
+  /* ── Dark-section surfaces ─────────────────────────────────────── */
+  --bg-dark-surface: rgba(255,255,255,0.05);  /* tarjeta/burbuja sobre fondo dark */
+  --bg-dark-hover:   rgba(255,255,255,0.10);  /* hover sobre superficie dark       */
+
+  /* ── Texto sobre fondos oscuros ─────────────────────────────────── */
+  --on-dark-primary: rgba(241,241,241,0.95);
+  --on-dark-muted:   rgba(207,207,207,0.75);
+  --on-dark-faint:   rgba(207,207,207,0.50);
+  --on-dark-dim:     rgba(207,207,207,0.30);
+  --on-dark-border:  rgba(255,255,255,0.10);
+
+  /* ── Tintes del acento ───────────────────────────────────────────── */
+  --accent-tint:        rgba(91,155,213,0.10);
+  --accent-tint-border: rgba(91,155,213,0.25);
+  --accent-overlay:     rgba(25,35,56,0.90);
+  --accent-nav-bg:      rgba(25,35,56,0.96);
+  --accent-nav-mobile:  rgba(25,35,56,0.99);
+
+  /* ── Pipe/water con transparencia ───────────────────────────────── */
+  --earth-border: rgba(91,155,213,0.25);
+
+  /* ── Overlays fotográficos ───────────────────────────────────────── */
+  --overlay-50:  rgba(0,0,0,0.55);
+  --overlay-25:  rgba(0,0,0,0.30);
+
+  /* ── Sombra de tarjeta ───────────────────────────────────────────── */
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.30);
+  --card-shadow-lg: 0 16px 48px rgba(0,0,0,0.45);
+}
+
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-card: var(--bg-card);
+  --color-muted: var(--text-secondary);
+  --color-border: var(--border);
+  --color-earth: var(--color-earth);
+  --color-beige: var(--color-beige);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), "Raleway", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.font-display {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.font-mono-price {
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Image Fallback ───────────────────────────────────────────────── */
+.img-container {
+  background-color: var(--color-beige);
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.875rem 2rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: scale(0.98);
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #F1F1F1;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.875rem 2rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(241,241,241,0.40);
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  border-color: #F1F1F1;
+  background: rgba(255,255,255,0.08);
+  transform: scale(0.98);
+}
+
+/* ─── Section Utilities ─────────────────────────────────────────────── */
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 1.5rem;
+  }
+}
+
+.section-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-earth);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-body), "Raleway", sans-serif;
+}
+
+.section-title {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 48rem;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* ─── Card Styles ───────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  border-color: rgba(91, 155, 213, 0.40);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  transform: translateY(-2px);
+}
+
+/* ─── Animations ────────────────────────────────────────────────────── */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+.ken-burns {
+  animation: kenBurns 8s ease-in-out alternate infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes countUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.30);
+}
+
+/* ─── Focus ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── Reduced Motion ────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
